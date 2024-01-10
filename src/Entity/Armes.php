@@ -30,6 +30,12 @@ class Armes
     #[ORM\Column(length: 255)]
     private ?string $magazine_capacity = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $image = null;
+
+    #[ORM\Column]
+    private ?int $rateOfFire = null;
+
     public function __construct()
     {
         $this->degats = new ArrayCollection();
@@ -102,6 +108,30 @@ class Armes
     public function setMagazineCapacity(string $magazine_capacity): static
     {
         $this->magazine_capacity = $magazine_capacity;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): static
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    public function getRateOfFire(): ?int
+    {
+        return $this->rateOfFire;
+    }
+
+    public function setRateOfFire(int $rateOfFire): static
+    {
+        $this->rateOfFire = $rateOfFire;
 
         return $this;
     }
