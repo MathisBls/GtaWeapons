@@ -17,7 +17,7 @@ class Rank
     private ?int $id = null;
 
     #[ORM\Column]
-    private ?int $num = null;
+    private ?string $img = null;
 
     public function getId(): ?int
     {
@@ -26,12 +26,12 @@ class Rank
 
     public function getNum(): ?int
     {
-        return $this->num;
+        return $this->img;
     }
 
-    public function setNum(int $num): static
+    public function setNum(string $img): static
     {
-        $this->num = $num;
+        $this->img = $img;
 
         return $this;
     }

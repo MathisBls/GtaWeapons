@@ -27,6 +27,9 @@ class Armes
     #[ORM\OneToMany(mappedBy: 'armes', targetEntity: Degats::class)]
     private Collection $degats;
 
+    #[ORM\Column(length: 255)]
+    private ?string $magazine_capacity = null;
+
     public function __construct()
     {
         $this->degats = new ArrayCollection();
@@ -87,6 +90,18 @@ class Armes
                 $degat->setArmes(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getMagazineCapacity(): ?string
+    {
+        return $this->magazine_capacity;
+    }
+
+    public function setMagazineCapacity(string $magazine_capacity): static
+    {
+        $this->magazine_capacity = $magazine_capacity;
 
         return $this;
     }

@@ -23,6 +23,9 @@ class Degats
     #[ORM\JoinColumn(nullable: false)]
     private ?PartieduCorps $partieducorps = null;
 
+    #[ORM\Column]
+    private ?int $degats = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -48,6 +51,18 @@ class Degats
     public function setPartieducorps(?PartieduCorps $partieducorps): static
     {
         $this->partieducorps = $partieducorps;
+
+        return $this;
+    }
+
+    public function getDegats(): ?int
+    {
+        return $this->degats;
+    }
+
+    public function setDegats(int $degats): static
+    {
+        $this->degats = $degats;
 
         return $this;
     }
