@@ -14,11 +14,11 @@ class HomeController extends AbstractController {
     #[Route('/', name: 'home')]
     public function index(CategoriesRepository $categorieRepository, ArmesRepository $armesRepository, DegatsRepository $degatsRepository): Response {
         $client = new Client(['verify' => false]);
-        $response = $client->get('https://localhost:8000/api/categoriess')->getBody()->getContents();
+        $response = $client->get('http://localhost:8000/api/categoriess')->getBody()->getContents();
         $categories = json_decode($response, true);
-        $response = $client->get('https://localhost:8000/api/armess')->getBody()->getContents();
+        $response = $client->get('http://localhost:8000/api/armess')->getBody()->getContents();
         $armes = json_decode($response, true);
-        $response = $client->get('https://localhost:8000/api/degatss')->getBody()->getContents();
+        $response = $client->get('http://localhost:8000/api/degatss')->getBody()->getContents();
         $degats = json_decode($response, true);
         return $this->render('home/index.html.twig', [
             'categories' => $categories['hydra:member'],
