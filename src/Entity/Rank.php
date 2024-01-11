@@ -24,7 +24,7 @@ class Rank
         return $this->id;
     }
 
-    public function getNum(): ?int
+    public function getNum(): ?string
     {
         return $this->img;
     }
