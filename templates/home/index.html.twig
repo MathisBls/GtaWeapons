@@ -33,12 +33,12 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {% for weapon in armes %}
             <div class="bg-red p-4 rounded shadow-md">
+                <img src="img/guns/{{ weapon.image }}" alt="{{ weapon.nom }}" />
                 <h2 class="text-xl font-bold mb-2">{{ weapon.nom }}</h2>
-                {# <img src="{{ asset('img/' ~ weapon.image) }}" alt="{{ weapon.nom }}" class="w-full mb-4"> #}
                 <div class="mt-4">
                     <p><strong>Magazine Capacity:</strong> {{ weapon.getMagazineCapacity }}</p>
                     <p><strong>Rate of fire:</strong> {{ weapon.getRateOfFire }}</p>
-                    <p><strong>Damage:</strong> 0p>
+                    <p><strong>Damage:</strong> </p>
                 </div>
             </div>
         {% endfor %}
