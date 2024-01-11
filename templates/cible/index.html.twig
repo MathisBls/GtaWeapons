@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="{{ asset('/build/app.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 {% endblock %}
 
 {% block body %}
@@ -37,8 +41,8 @@
     <div class="section-title">Rangs</div>
         <div class="rank-container">
             {% for rank in ranks %}
-                <div class="rank-item" data-id="{{ rank.id }}">
-                    <img src="{{ asset(rank.getNum) }}" class="rank-image">
+                <div class="rank-item" data-id="{{ rank.id }}" name-rank="{{rank.nom}}">
+                    <img src="{{ asset(rank.num) }}" class="rank-image">
                 </div>
             {% endfor %}
         </div>
@@ -61,17 +65,18 @@
             <img src="{{ asset('/img/pngegg.png') }}" usemap="#image-map" class="cible-image">
 <map name="image-map">
     <area target="_blank" alt="Head" title="Head" href="" coords="317,290,431,291,430,282,427,270,427,257,428,241,433,223,445,213,452,199,454,183,445,166,447,145,442,124,433,108,421,94,407,85,393,78,379,75,366,75,352,78,338,87,324,96,312,108,305,122,300,138,298,152,298,164,296,176,293,192,294,206,308,225,310,236,320,257,317,274,317,274,317,288,320,287" shape="poly">
-    <area target="_blank" alt="body" title="Arms 1" href="" coords="225,565,220,349,225,570,218,578,214,589,212,598,206,610,203,621,200,637,197,656,195,676,191,692,189,712,185,734,179,752,174,771,165,785,163,800,154,813,149,826,146,838,142,847,141,859,142,877,146,887,148,900,150,911,151,922,152,937,151,949,150,958,158,972,158,980,153,990,148,994,138,997,131,995,119,988,111,982,99,964,94,949,95,937,95,920,98,894,101,839,100,820,101,796,105,725,130,614,158,495,168,410,177,379,187,364,199,357,210,353,219,348" shape="poly">
-    <area target="_blank" alt="body" title="Arms 2" href="" coords="516,565,525,580,532,593,540,615,545,633,547,661,550,685,556,701,558,731,568,756,572,775,584,806,594,825,600,842,603,870,600,890,596,904,598,946,591,967,590,986,599,993,612,994,623,989,635,983,645,974,653,957,650,919,644,901,644,805,640,735,638,698,619,633,618,622,606,571,586,466,584,435,578,398,568,376,542,357,526,351,515,347,507,343" shape="poly">
-    <area target="_blank" alt="body" title="body" href="" coords="213,944,366,940,380,939,390,939,531,938,511,826,506,797,500,751,500,643,515,568,504,341,454,311,435,297,316,287,272,324,244,342,218,348,228,569,232,587,245,635,249,674,250,711,239,808" shape="poly">
-    <area target="_blank" alt="legs" title="legs 1" href="" coords="364,940,214,941,212,984,210,1087,218,1146,206,1214,201,1249,174,1316,164,1360,165,1423,170,1467,177,1510,179,1543,179,1574,169,1605,157,1624,143,1643,150,1652,172,1655,190,1659,209,1661,228,1663,236,1647,235,1614,240,1586,231,1549,235,1513,266,1376,273,1301,310,1198" shape="poly">
-    <area target="_blank" alt="legs" title="legs 2" href="" coords="383,941,533,940,535,984,537,1015,535,1058,534,1089,533,1125,528,1152,531,1178,539,1201,542,1224,544,1249,555,1276,574,1325,582,1374,582,1410,578,1449,574,1474,569,1515,566,1541,567,1564,571,1584,571,1606,577,1618,592,1631,600,1644,591,1653,570,1658,549,1660,528,1663,513,1660,512,1632,509,1588,516,1561,515,1510,506,1478,503,1470,495,1434,486,1402,481,1345,480,1321,463,1275,442,1225,429,1169" shape="poly">
+    <area target="_blank" alt="Chest" title="Arms 1" href="" coords="225,565,220,349,225,570,218,578,214,589,212,598,206,610,203,621,200,637,197,656,195,676,191,692,189,712,185,734,179,752,174,771,165,785,163,800,154,813,149,826,146,838,142,847,141,859,142,877,146,887,148,900,150,911,151,922,152,937,151,949,150,958,158,972,158,980,153,990,148,994,138,997,131,995,119,988,111,982,99,964,94,949,95,937,95,920,98,894,101,839,100,820,101,796,105,725,130,614,158,495,168,410,177,379,187,364,199,357,210,353,219,348" shape="poly">
+    <area target="_blank" alt="Chest" title="Arms 2" href="" coords="516,565,525,580,532,593,540,615,545,633,547,661,550,685,556,701,558,731,568,756,572,775,584,806,594,825,600,842,603,870,600,890,596,904,598,946,591,967,590,986,599,993,612,994,623,989,635,983,645,974,653,957,650,919,644,901,644,805,640,735,638,698,619,633,618,622,606,571,586,466,584,435,578,398,568,376,542,357,526,351,515,347,507,343" shape="poly">
+    <area target="_blank" alt="Chest" title="body" href="" coords="213,944,366,940,380,939,390,939,531,938,511,826,506,797,500,751,500,643,515,568,504,341,454,311,435,297,316,287,272,324,244,342,218,348,228,569,232,587,245,635,249,674,250,711,239,808" shape="poly">
+    <area target="_blank" alt="Limbs" title="legs 1" href="" coords="364,940,214,941,212,984,210,1087,218,1146,206,1214,201,1249,174,1316,164,1360,165,1423,170,1467,177,1510,179,1543,179,1574,169,1605,157,1624,143,1643,150,1652,172,1655,190,1659,209,1661,228,1663,236,1647,235,1614,240,1586,231,1549,235,1513,266,1376,273,1301,310,1198" shape="poly">
+    <area target="_blank" alt="Limbs" title="legs 2" href="" coords="383,941,533,940,535,984,537,1015,535,1058,534,1089,533,1125,528,1152,531,1178,539,1201,542,1224,544,1249,555,1276,574,1325,582,1374,582,1410,578,1449,574,1474,569,1515,566,1541,567,1564,571,1584,571,1606,577,1618,592,1631,600,1644,591,1653,570,1658,549,1660,528,1663,513,1660,512,1632,509,1588,516,1561,515,1510,506,1478,503,1470,495,1434,486,1402,481,1345,480,1321,463,1275,442,1225,429,1169" shape="poly">
 </map>
         </div>
     </div>
 
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script>
+    const BASE_URL = window.location.origin;
     var selectedWeaponId = null;
     var selectedRankId = null;
 
@@ -107,18 +112,61 @@
         area.addEventListener('click', function(event) {
             event.preventDefault();
             if (selectedWeaponId && selectedRankId) {
+                var bodyPart = this.alt;
                 var weaponName = document.querySelector('.swiper-slide[data-id="' + selectedWeaponId + '"]').textContent;
-                var rankName = document.querySelector('.rank-item[data-id="' + selectedRankId + '"]').textContent;
-
-                addHistoriqueRow(this.alt, weaponName, rankName);
+                var weaponId = $('.swiper-slide.swiper-slide-selected').attr("data-id")
+                var rankId = $('.rank-item.rank-item-selected').attr("data-id");
+                var rankName = $('.rank-item.rank-item-selected').attr("name-rank");
+                var gunDamage = null;
+                var multiplier = null;
+                var totalDamage = null;
+                $.get(`${BASE_URL}/api/armess/${weaponId}`, function(responseArme) {
+                    damageApi = responseArme.degats[0];
+                    console.log(damageApi);
+                     $.get(`${BASE_URL}${damageApi}`, function(responseDamage) {
+                        gunDamage = responseDamage.degats;
+                        $.get(`${BASE_URL}/api/partiedu_corpss`, function(responseBodyPart) {
+                            bodyPartApi = responseBodyPart["hydra:member"];
+                            for(let i = 0; i<bodyPartApi.length; i++){
+                                if(bodyPartApi[i].nom == bodyPart){
+                                    multiplier = bodyPartApi[i].multiplicateur; 
+                                    break;
+                                }
+                            }
+                            totalDamage = multiplier * gunDamage;
+                            addHistoriqueRow(bodyPart, weaponName, rankName, totalDamage);
+                        })
+                        .fail(function(error) {
+                            console.error('Error:', error);
+                            handleError();
+                        });
+                    })
+                    .fail(function(error) {
+                        console.error('Error:', error);
+                        handleError();
+                    });
+                })
+                .fail(function(error) {
+                    console.error('Error:', error);
+                    handleError();
+                });
+                function handleError() {
+                    $.alert({
+                        title: 'Erreur connexion',
+                        content: 'Impossible de se connecter au serveur. Veuillez vérifier votre connexion internet et réessayer.',
+                    });
+                }
             } else {
                 console.log('Veuillez sélectionner une arme et un rang.');
+                $.alert({
+                    title: 'Selectionnez une arme et un rang',
+                    content: 'Veuillez sélectionner une arme et un rang.',
+                });
             }
         });
     });
 
-    function addHistoriqueRow(zone, arme, rank) {
-        var degats = 0;
+    function addHistoriqueRow(zone, arme, rank, degats) {
         var tableBody = document.getElementById('historiqueBody');
         var newRow = tableBody.insertRow();
         newRow.innerHTML = `<td>${zone}</td><td>${arme}</td><td>${rank}</td><td>${degats}</td>`;

@@ -6,7 +6,6 @@ use App\Repository\ArmesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use GuzzleHttp\Client;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class CategoryController extends AbstractController {
     #[Route('/category/{slug}', name: 'category_show')]
@@ -15,7 +14,7 @@ class CategoryController extends AbstractController {
         $weapons = array();
         $existCategory = false;
         $allWeapons = array();
-        $response = $client->get('http://localhost:8000/api/categoriess')->getBody()->getContents();
+        $response = $client->get('https://localhost:8000/api/categoriess')->getBody()->getContents();
         $category = json_decode($response, true);
         $category = $category["hydra:member"];
         for($i = 0; $i<count($category); $i++){
@@ -31,7 +30,7 @@ class CategoryController extends AbstractController {
         }
 
         for($i = 0; $i<count($weapons); $i++){
-            $response = $client->get('http://localhost:8000'.$weapons[$i])->getBody()->getContents();
+            $response = $client->get('https://localhost:8000'.$weapons[$i])->getBody()->getContents();
             $weaponsJson = json_decode($response, true);
             array_push($allWeapons ,$weaponsJson);
         }

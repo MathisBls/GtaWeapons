@@ -19,6 +19,9 @@ class Rank
     #[ORM\Column]
     private ?string $img = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $nom = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -32,6 +35,18 @@ class Rank
     public function setNum(string $img): static
     {
         $this->img = $img;
+
+        return $this;
+    }
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): static
+    {
+        $this->nom = $nom;
 
         return $this;
     }
