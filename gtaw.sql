@@ -1,11 +1,11 @@
-INSERT INTO `categories` (`id`, `nom`) VALUES
-(1, 'Pistol'),
-(2, 'SMG'),
-(3, 'Assault Rifle'),
-(4, 'MG'),
-(5, 'Shotgun'),
-(6, 'Sniper Rifle'),
-(7, 'Heavy');
+INSERT INTO `categories` (`id`, `nom`, `slug`) VALUES
+(1, 'Pistol', 'pistol'),
+(2, 'SMG', 'smg'),
+(3, 'Assault Rifle', 'assault'),
+(4, 'MG', 'mg'),
+(5, 'Shotgun', 'shotgun'),
+(6, 'Sniper Rifle', 'sniper'),
+(7, 'Heavy', 'heavy');
 
 
 INSERT INTO `armes` (`id`, `categorie_id`, `nom`, `magazine_capacity`, `rate_of_fire`, `image`) VALUES
