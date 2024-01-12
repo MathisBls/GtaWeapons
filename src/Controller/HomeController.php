@@ -22,7 +22,6 @@ class HomeController extends AbstractController {
 
             $response = $client->get('http://localhost:8000/api/armess')->getBody()->getContents();
             $armes = json_decode($response, true);
-
             $response = $client->get('http://localhost:8000/api/degatss')->getBody()->getContents();
             $degats = json_decode($response, true);
         } catch (GuzzleException $e) {
