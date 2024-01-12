@@ -14,7 +14,7 @@ class CategoryController extends AbstractController {
         $weapons = array();
         $existCategory = false;
         $allWeapons = array();
-        $response = $client->get('https://localhost:8000/api/categoriess')->getBody()->getContents();
+        $response = $client->get('http://localhost:8000/api/categoriess')->getBody()->getContents();
         $category = json_decode($response, true);
         $category = $category["hydra:member"];
         for($i = 0; $i<count($category); $i++){
