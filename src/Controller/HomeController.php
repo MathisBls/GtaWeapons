@@ -23,7 +23,7 @@ class HomeController extends AbstractController {
             $response = $client->get('http://localhost:8000/api/armess')->getBody()->getContents();
             $armes = json_decode($response, true);
             for($i = 0; $i<$armes['hydra:totalItems']; $i++){
-                $response = $client->get('https://localhost:8000'.$armes["hydra:member"][$i]['degats'][0])->getBody()->getContents();
+                $response = $client->get('http://localhost:8000'.$armes["hydra:member"][$i]['degats'][0])->getBody()->getContents();
                 $degats[$armes["hydra:member"][$i]['id']] =  json_decode($response, true)['degats'];
             }
         } catch (GuzzleException $e) {
