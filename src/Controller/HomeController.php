@@ -19,11 +19,13 @@ class HomeController extends AbstractController {
         try {
             $response = $client->get('http://localhost:8000/api/categoriess')->getBody()->getContents();
             $categories = json_decode($response, true);
-
+            $degats = array();
             $response = $client->get('http://localhost:8000/api/armess')->getBody()->getContents();
             $armes = json_decode($response, true);
-            $response = $client->get('http://localhost:8000/api/degatss')->getBody()->getContents();
-            $degats = json_decode($response, true);
+            for($i = 0; $i<$armes['hydra:totalItems']; $i++){
+                $response = $client->get('https://localhost:8000'.$armes["hydra:member"][$i]['degats'][0])->getBody()->getContents();
+                $degats[$armes["hydra:member"][$i]['id']] =  json_decode($response, true)['degats'];
+            }
         } catch (GuzzleException $e) {
             $this->addFlash('error', 'Problème de connexion à l\'API: ' . $e->getMessage());
             return $this->redirectToRoute('home');
@@ -32,7 +34,7 @@ class HomeController extends AbstractController {
         return $this->render('home/index.html.twig', [
             'categories' => $categories['hydra:member'] ?? [],
             'armes' => $armes['hydra:member'] ?? [],
-            'degats' => $degats['hydra:member'] ?? []
+            'degats' => $degats ?? []
         ]);
     }
 }
