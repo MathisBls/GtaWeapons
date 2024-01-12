@@ -34,10 +34,16 @@ class CategoryController extends AbstractController {
             $weaponsJson = json_decode($response, true);
             array_push($allWeapons ,$weaponsJson);
         }
+        $degats = array();
+        for($i = 0; $i<count($allWeapons); $i++){
+            $response = $client->get('https://localhost:8000'.$allWeapons[$i]['degats'][0])->getBody()->getContents();
+            $degats[$allWeapons[$i]['id']] =  json_decode($response, true)['degats'];
+        }
 
         return $this->render('category/show.html.twig', [
             'category' => $category,
             'armes' => $allWeapons,
+            'degats' => $degats
         ]);
     }
 }
