@@ -133,7 +133,7 @@
                                     break;
                                 }
                             }
-                            totalDamage = multiplier * gunDamage;
+                            totalDamage = Math.ceil(multiplier * gunDamage);
                             addHistoriqueRow(bodyPart, weaponName, rankName, totalDamage);
                         })
                         .fail(function(error) {
